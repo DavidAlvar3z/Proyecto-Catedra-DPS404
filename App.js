@@ -1,53 +1,51 @@
-<<<<<<< Updated upstream
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-=======
-import React from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet, ImageBackground } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import Registro from "./Registro";
+import LoginCredenciales from "./LoginCredenciales"; // Asegúrate de tener este archivo creado
 
 export default function App() {
+  const [showLogin, setShowLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false); // Para determinar si estamos en el login o registro
+
   return (
     <ImageBackground source={require("./assets/Fondo.png")} style={styles.container}>
-      <Image source={require("./assets/Logo.png")} style={styles.logo} />
-      
-      <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.buttonText}>LOGIN</Text>
-        <FontAwesome5 name="arrow-right" size={20} color="white" style={styles.icon} />
-      </TouchableOpacity>
-      
-      <Text style={styles.text}>¿No tienes una cuenta?</Text>
-      
-      <TouchableOpacity style={styles.registerButton}>
-        <Text style={styles.buttonText}>REGÍSTRATE</Text>
-      </TouchableOpacity>
+      {isLogin ? (
+        <LoginCredenciales goBack={() => setIsLogin(false)} />
+      ) : (
+        <>
+          {showLogin ? (
+            <>
+              <Image source={require("./assets/Logo.png")} style={styles.logo} />
+              <TouchableOpacity style={styles.loginButton} onPress={() => setIsLogin(true)}>
+                <Text style={styles.buttonText}>LOGIN</Text>
+                <FontAwesome5 name="arrow-right" size={20} color="white" style={styles.icon} />
+              </TouchableOpacity>
+              <Text style={styles.text}>¿No tienes una cuenta?</Text>
+              <TouchableOpacity
+                style={styles.registerButton}
+                onPress={() => setShowLogin(false)}
+              >
+                <Text style={styles.buttonText}>REGÍSTRATE</Text>
+              </TouchableOpacity>
+            </>
+          ) : (
+            <Registro navigation={{ goBack: () => setShowLogin(true) }} />
+          )}
+        </>
+      )}
     </ImageBackground>
->>>>>>> Stashed changes
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< Updated upstream
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-=======
     justifyContent: "center",
     alignItems: "center",
   },
   logo: {
-    width: 150,  // Ajusta según el tamaño de la imagen
+    width: 150,
     height: 150,
     marginBottom: 20,
   },
@@ -80,4 +78,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
->>>>>>> Stashed changes
