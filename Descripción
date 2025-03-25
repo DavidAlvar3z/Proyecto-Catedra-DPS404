@@ -1,0 +1,34 @@
+🐉 Aplicación de Pokémon con React Native
+Esta aplicación en React Native permite a los usuarios explorar una lista de Pokémon, ver detalles individuales y acceder a información detallada extraída desde la PokeAPI.
+
+🛠️ Características principales
+Lista de Pokémon: Muestra una lista completa de Pokémon con imágenes y nombres.
+
+Detalles individuales: Al seleccionar un Pokémon, se muestran datos como ID, altura, peso, especie y movimientos.
+
+Interfaz optimizada: Uso de FlatList, TouchableOpacity y ScrollView para una navegación fluida.
+
+Consumo de API: Obtiene datos en tiempo real desde PokeAPI utilizando axios.
+
+📂 Estructura del código
+PokemonApp.js → Componente principal que maneja la visualización de la lista de Pokémon y sus detalles.
+
+service.js → Contiene las funciones para obtener los datos de la API.
+
+obtenerPokemons(): Obtiene la lista de Pokémon.
+
+obtenerDetallesPokemon(): Obtiene información detallada de un Pokémon seleccionado.
+
+style.js → Contiene los estilos de la aplicación para mejorar la apariencia visual.
+
+🚀 Instalación y ejecución
+Clona este repositorio:
+
+git clone https://github.com/tu-usuario/tu-repo.git
+cd tu-repo
+
+Instala las dependencias:
+npm install
+
+Ejecuta la aplicación:
+npx expo start
