@@ -1,40 +1,93 @@
-# Proyecto-Catedra-DPS404
+🎬 CineRetro – Proyecto Cátedra DPS404
+👥 Integrantes del equipo
+David Alejandro Álvarez Moreira - AM240104
 
-Integrantes:
+Ashley Gabriela Valdez González - VG240979
 
-David Alejandro Alvarez Moreira, AM240104
-Ashley Gabriela Valdez González, VG240979
-Gabriela Abigail Chávez Recinos, CR241682 
-Veronica Elizabeth Rodriguez Majano, RM24011 
-Alexandra Raquel Rodriguez Majano, RM240112 
-Amanda Isabella Serpas Rivera, SR240105
+Gabriela Abigail Chávez Recinos - CR241682
 
-Instalación y ejecución del proyecto:
+Verónica Elizabeth Rodríguez Majano - RM24011
 
-1. Paso:
-Abrimos CMD y hacemos uso del comando:
-"npx create-expo-app@latest CineRetro –-template blank"
-(Este comando nos permite crear una plantilla en blanco para
-trabajar el proyecto en React Native).
+Alexandra Raquel Rodríguez Majano - RM240112
 
-2. Paso:
-Luego de que el proyecto se instalo de forma correcta procedemos a entrar al proyecto por medio de:
+Amanda Isabella Serpas Rivera - SR240105
 
-"cd Ruta/CineRetro" el cual nos permitira entrar al fichero donde se encuentra este,
-ya dentro del proyecto ejecutamos el comando "code ." que nos abre una nueva venta de VS Code
-para poder trabajar el proyecto y luego de haber hecho todos los cambios necesarios al proyecto o para visualizar
-alguna nueva ventana ejecutamos el comando "npx expo start" para poder visualizar nuestra aplicación, haciendo uso
-de "Enlace Móvil" y abrimos la aplicación de "Expo Go" instalada en nuestro telefono y se nos desplegara una ventana
-de Expo Go en nuestra computadora en la cual podremos visualizar el proyecto que trabajamos en VS Code y hacer modificaciones
-de acuerdo a nuestra necesidad.
+📱 Descripción general
+CineRetro es una aplicación móvil desarrollada con React Native utilizando Expo. Está orientada a ofrecer una experiencia interactiva para los usuarios amantes del cine retro. Permite explorar datos interesantes usando una API REST pública, presentando contenido dinámico y visualmente atractivo.
 
-Tecnologias usadas:
+Este proyecto fue desarrollado como parte de la asignatura Desarrollo de Aplicaciones para Dispositivos Móviles (DPS404).
 
-- Visual Studio Code.
-- Expo Go.
-- Github Web.
-- Github Desktop.
-- Enlance Movil (Nativo de Microsoft).
-- AXIOS.
-- API Rest Publica: https://www.freepublicapis.com/pokefact. (Link de donde se tomo la API Rest Publica).
-- React Native 
+🚀 Instalación y ejecución del proyecto
+1. Crear la aplicación
+bash
+Copiar
+Editar
+npx create-expo-app@latest CineRetro --template blank
+2. Acceder al proyecto
+bash
+Copiar
+Editar
+cd Ruta/CineRetro
+3. Abrir el proyecto en Visual Studio Code
+bash
+Copiar
+Editar
+code .
+4. Ejecutar la aplicación
+bash
+Copiar
+Editar
+npx expo start
+Abre la app Expo Go en tu teléfono.
+
+Escanea el código QR que aparece en tu navegador.
+
+Visualiza la app en tiempo real con recarga automática de cambios.
+
+🧰 Tecnologías utilizadas
+React Native
+
+Expo
+
+Visual Studio Code
+
+Axios – Cliente HTTP para consumir APIs
+
+GitHub (Web y Desktop)
+
+Enlace Móvil – Herramienta de depuración
+
+Expo Go
+
+API pública:
+🔗 Pokefact API
+
+✨ Funcionalidades
+Visualización de datos dinámicos desde una API externa.
+
+Interfaz adaptable a dispositivos móviles.
+
+Integración con Expo Go para pruebas en tiempo real.
+
+Diseño optimizado para fluidez y buena experiencia de usuario.
+
+📁 Estructura del proyecto
+plaintext
+Copiar
+Editar
+CineRetro/
+├── assets/               # Imágenes, íconos y recursos multimedia
+├── components/           # Componentes reutilizables de la UI
+├── screens/              # Pantallas principales de la app
+├── App.js                # Punto de entrada principal
+└── package.json          # Dependencias del proyecto
+🛠 Requisitos
+Node.js (versión recomendada: 18.x o superior)
+
+npm o yarn
+
+App Expo Go instalada en el dispositivo móvil (disponible en App Store / Google Play)
+
+📄 Licencia
+Este proyecto se desarrolla con fines académicos y no está destinado a fines comerciales.
+© 2025 -[Universidad Don Bosco]
