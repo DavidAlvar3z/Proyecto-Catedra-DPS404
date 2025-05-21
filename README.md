@@ -21,7 +21,7 @@
 
 🛠 Proyecto realizado para la asignatura: **Desarrollo de Aplicaciones para Dispositivos Móviles (DPS404)**.
 
-📌 Rama del proyecto: `CineRetro-Proyecto Catedra`
+📌 Rama del proyecto: `CineRetro-Proyecto-Catedra`
 
 ---
 
@@ -32,7 +32,7 @@
 ```bash
 git clone https://github.com/DavidAlvar3z/Investigacion-Aplicada2-DPS.git
 cd Investigacion-Aplicada2-DPS
-git checkout "CineRetro-Proyecto Catedra"
+git checkout "CineRetro-Proyecto-Catedra"
 ```
 
 ### 2️⃣ Instalar dependencias
