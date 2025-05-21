@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from "react-native";
+import { View, Text, TouchableOpacity, Image, ImageBackground } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import Registro from "./Registro";
-import LoginCredenciales from "./LoginCredenciales"; // Asegúrate de tener este archivo creado
+import Registro from "./components/Registro";
+import LoginCredenciales from "./components/Login";
+import styles from "./styles/appStyles"; // Importamos los estilos desde archivo separado
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(true);
-  const [isLogin, setIsLogin] = useState(false); // Para determinar si estamos en el login o registro
+  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <ImageBackground source={require("./assets/Fondo.png")} style={styles.container}>
@@ -22,10 +23,7 @@ export default function App() {
                 <FontAwesome5 name="arrow-right" size={20} color="white" style={styles.icon} />
               </TouchableOpacity>
               <Text style={styles.text}>¿No tienes una cuenta?</Text>
-              <TouchableOpacity
-                style={styles.registerButton}
-                onPress={() => setShowLogin(false)}
-              >
+              <TouchableOpacity style={styles.registerButton} onPress={() => setShowLogin(false)}>
                 <Text style={styles.buttonText}>REGÍSTRATE</Text>
               </TouchableOpacity>
             </>
@@ -37,44 +35,3 @@ export default function App() {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logo: {
-    width: 150,
-    height: 150,
-    marginBottom: 20,
-  },
-  loginButton: {
-    backgroundColor: "#a63a00",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 50,
-    marginBottom: 10,
-  },
-  registerButton: {
-    backgroundColor: "#e05a00",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 50,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  icon: {
-    marginLeft: 10,
-  },
-  text: {
-    color: "black",
-    marginBottom: 10,
-    fontSize: 16,
-  },
-});
