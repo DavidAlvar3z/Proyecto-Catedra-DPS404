@@ -11,8 +11,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../styles/catalogoStyles";
-
-// Importa la API key desde .env
+import DetallePelicula from "./DetallePelicula";
 import { TMDB_API_KEY } from "@env";
 
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
@@ -22,6 +21,7 @@ export default function CatalogoPeliculas({ onLogout }) {
   const [moviesByGenre, setMoviesByGenre] = useState({});
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(null);
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
 
   useEffect(() => {
     async function fetchToken() {
@@ -60,6 +60,11 @@ export default function CatalogoPeliculas({ onLogout }) {
   async function handleLogout() {
     await AsyncStorage.removeItem("userToken");
     onLogout();
+  }
+
+  // Mostrar detalle si se seleccionó película
+  if (selectedMovieId) {
+    return <DetallePelicula movieId={selectedMovieId} onBack={() => setSelectedMovieId(null)} />;
   }
 
   if (!token) {
@@ -130,7 +135,10 @@ export default function CatalogoPeliculas({ onLogout }) {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingLeft: 15 }}
               renderItem={({ item }) => (
-                <View style={styles.movieItem}>
+                <TouchableOpacity
+                  style={styles.movieItem}
+                  onPress={() => setSelectedMovieId(item.id)}
+                >
                   {item.poster_path ? (
                     <Image
                       source={{ uri: IMAGE_BASE + item.poster_path }}
@@ -145,7 +153,7 @@ export default function CatalogoPeliculas({ onLogout }) {
                   <Text style={styles.movieTitle} numberOfLines={2}>
                     {item.title}
                   </Text>
-                </View>
+                </TouchableOpacity>
               )}
             />
           </View>
