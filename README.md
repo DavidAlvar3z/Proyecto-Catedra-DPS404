@@ -1,28 +1,33 @@
 
-🎬 **CineRetro – Proyecto Cátedra DPS404**
-📚 Universidad Don Bosco – 2025
-
-👥 **Integrantes del equipo**
-David Alejandro Álvarez Moreira – AM240104
-Ashley Gabriela Valdez González – VG240979
-Gabriela Abigail Chávez Recinos – CR241682
-Verónica Elizabeth Rodríguez Majano – RM24011
-Alexandra Raquel Rodríguez Majano – RM240112
-Amanda Isabella Serpas Rivera – SR240105
-
-📱 **Descripción general**
-CineRetro es una aplicación móvil creada con React Native y Expo, diseñada para ofrecer una experiencia interactiva y nostálgica a los amantes del cine retro. Utiliza una API REST pública para mostrar datos curiosos y entretenidos de forma dinámica y atractiva.
-
-Este proyecto fue desarrollado como parte de la asignatura Desarrollo de Aplicaciones para Dispositivos Móviles (DPS404).
-
-📌 **Nota:** Este proyecto se encuentra en una rama alternativa llamada:
-`CineRetro-Proyecto Catedra`
+# 🎬 CineRetro – Proyecto Cátedra DPS404
+📚 **Universidad Don Bosco – 2025**
 
 ---
 
-🚀 **Instalación y ejecución del proyecto**
+## 👥 Integrantes del equipo
 
-1️⃣ Clonar el repositorio y cambiar a la rama del proyecto
+- 👤 David Alejandro Álvarez Moreira – `AM240104`
+- 👤 Ashley Gabriela Valdez González – `VG240979`
+- 👤 Gabriela Abigail Chávez Recinos – `CR241682`
+- 👤 Verónica Elizabeth Rodríguez Majano – `RM24011`
+- 👤 Alexandra Raquel Rodríguez Majano – `RM240112`
+- 👤 Amanda Isabella Serpas Rivera – `SR240105`
+
+---
+
+## 📱 Descripción General
+
+**CineRetro** es una aplicación móvil desarrollada con **React Native** y **Expo**, diseñada para brindar una experiencia única y nostálgica a los amantes del cine retro. Consume datos desde una API pública y los presenta de forma dinámica.
+
+🛠 Proyecto realizado para la asignatura: **Desarrollo de Aplicaciones para Dispositivos Móviles (DPS404)**.
+
+📌 Rama del proyecto: `CineRetro-Proyecto Catedra`
+
+---
+
+## 🚀 Instalación y Ejecución del Proyecto
+
+### 1️⃣ Clonar el repositorio
 
 ```bash
 git clone https://github.com/DavidAlvar3z/Investigacion-Aplicada2-DPS.git
@@ -30,7 +35,7 @@ cd Investigacion-Aplicada2-DPS
 git checkout "CineRetro-Proyecto Catedra"
 ```
 
-2️⃣ Instalar dependencias
+### 2️⃣ Instalar dependencias
 
 ```bash
 npm install
@@ -38,99 +43,104 @@ npm install
 yarn install
 ```
 
-3️⃣ Ejecutar la aplicación
+### 3️⃣ Ejecutar la app con Expo o Android Studio
 
+- Usando **Expo CLI**:
 ```bash
 npx expo start
 ```
+- O abre el proyecto directamente desde **Android Studio**.
 
-También puedes abrir el proyecto con Android Studio para pruebas y emulación.
-
-Abre la app Expo Go en tu dispositivo móvil, escanea el código QR y visualiza la app en tiempo real con recarga automática.
-
----
-
-🧰 **Tecnologías utilizadas**
-
-* React Native
-* Expo
-* Visual Studio Code
-* Axios – Cliente HTTP para consumir APIs
-* GitHub Web y GitHub Desktop
-* Enlace Móvil – Herramienta de depuración
-* Expo Go
-
-🔗 **Pokefact API – API pública utilizada**
-
-✨ **Funcionalidades principales**
-
-* Visualización de datos dinámicos desde una API externa
-* Interfaz adaptable y responsiva para dispositivos móviles
-* Pruebas en tiempo real con integración de Expo Go
-* Diseño optimizado para una experiencia de usuario fluida
+📱 Escanea el QR en la terminal usando **Expo Go** en tu móvil para probar la app en tiempo real.
 
 ---
 
-📁 **Estructura del proyecto**
+## 🧰 Tecnologías Utilizadas
+
+- ⚛️ React Native
+- 🚀 Expo
+- 💻 Visual Studio Code
+- 🔗 Axios – Cliente HTTP
+- 🐙 GitHub Web y Desktop
+- 🧪 Enlace Móvil / Expo Go
+
+---
+
+## 🔗 API Pública Utilizada
+
+- [Pokefact API](https://pokefact-api.example.com)
+
+---
+
+## ✨ Funcionalidades Principales
+
+- Visualización dinámica de datos desde una API externa
+- Interfaz responsive y optimizada para móviles
+- Diseño intuitivo y atractivo para el usuario
+- Soporte para pruebas en tiempo real
+
+---
+
+## 📁 Estructura del Proyecto
 
 ```
 CineRetro/
-├── assets/               # Imágenes, íconos y recursos multimedia
-├── components/           # Componentes reutilizables de la UI
-├── screens/              # Pantallas principales de la app
-├── styles/               # Estilos separados del código JS
-├── backend/              # Código backend (PHP, conexión a DB)
-├── App.js                # Punto de entrada principal
+├── assets/               # Imágenes, íconos y multimedia
+├── components/           # Componentes reutilizables
+├── screens/              # Pantallas principales
+├── styles/               # Archivos de estilos CSS
+├── backend/              # Lógica backend y conexión DB
+├── App.js                # Entrada principal de la app
 └── package.json          # Dependencias del proyecto
 ```
 
 ---
 
-⚠️ **Configuración y uso de la base de datos**
+## ⚠️ Configuración y Uso de la Base de Datos
 
-Para que la funcionalidad de login y registro con base de datos funcione correctamente, debes:
+Para que las funciones de login y registro funcionen:
 
-* Colocar la carpeta backend dentro de la carpeta www (WAMPP) o htdocs (XAMPP).
-* Usar la siguiente URL en la app para conectar con el backend: 
-  `http://TU_IP_LOCAL/PROYECTO-CATEDRA-DPS404/backend/login.php`
-* Asegúrate de tener el servidor local activo y configurado para que la app pueda comunicarse con la base de datos.
+✅ Coloca la carpeta `backend` en `www` (WAMPP) o `htdocs` (XAMPP).  
+✅ Importa el archivo SQL detallado que está en `backend/crear_db.sql`. Este crea la base de datos `appusuarios` y la tabla `usuarios` (con `DROP DATABASE` por si existe una versión anterior).
 
-🛠 **Cambios importantes recientes**
+📡 Usa esta URL en la app para la conexión al backend:
 
-* Se mejoró el diseño de las pantallas de login y registro para mayor uniformidad y experiencia.
-* Se añadió validación de correo electrónico y contraseña en frontend.
-* Implementación de hasheo de contraseñas y base de datos para guardar usuarios en backend.
-* Se creó un archivo SQL detallado en la carpeta backend que incluye la creación de la base de datos appusuarios y la tabla usuarios, con DROP DATABASE para eliminar versiones previas si existen.
-* Separación de estilos en archivos independientes para mejor organización.
-* Reorganización completa del proyecto con carpetas para backend, estilos y componentes.
+```txt
+http://usuario/PROYECTO-CATEDRA-DPS404/backend/login.php
+```
+
+> Reemplaza `usuario` con tu IP local si estás usando una red WiFi. Asegúrate de que tu servidor local esté activo.
 
 ---
 
-🛠 **Despliegue de la base de datos**
+## 🛠 Cambios Importantes Recientes
 
-Para desplegar la base de datos:
-
-1. Abre tu cliente MySQL o phpMyAdmin.
-2. Ejecuta el script SQL que está en `backend/db.sql`.
-3. Esto creará la base de datos `appusuarios` y la tabla `usuarios`, borrando versiones anteriores si existen.
-
----
-
-🛠 **Requisitos**
-
-| Herramienta | Versión recomendada    |
-| ----------- | ---------------------- |
-| Node.js     | 18.x o superior        |
-| npm o yarn  | Última versión estable |
-| Expo CLI    | Última versión         |
-| App Expo Go | Instalado en el móvil  |
+✅ Se mejoró el diseño de login y registro para mayor uniformidad.  
+✅ Validación de correo y contraseña en el frontend.  
+✅ Hasheo de contraseñas y conexión a base de datos implementados.  
+✅ Archivo SQL agregado con toda la estructura de DB (`backend/crear_db.sql`).  
+✅ Separación de estilos para organización más clara.  
+✅ Reestructuración completa con separación de carpetas.
 
 ---
 
-📄 **Licencia**
-Este proyecto ha sido desarrollado con fines académicos y no comerciales como parte del ciclo 01-2025.
+## 🧪 Requisitos
+
+| Herramienta       | Versión recomendada     |
+| ----------------- | ----------------------- |
+| Node.js           | 18.x o superior         |
+| npm o yarn        | Última versión estable  |
+| Expo CLI          | Última versión          |
+| App Expo Go       | Instalada en tu móvil   |
+| Android Studio    | Opcional para pruebas   |
+
+---
+
+## 📄 Licencia
+
+Este proyecto es de carácter académico (no comercial) y se desarrolla en el ciclo 01-2025.  
 © 2025 – Universidad Don Bosco
 
 ---
 
-¿Tienes dudas o comentarios? ¡No dudes en contactarnos! 😊
+¿Dudas o sugerencias? ¡No dudes en escribirnos! 😊
