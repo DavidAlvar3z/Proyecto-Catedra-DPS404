@@ -1,0 +1,12 @@
+DROP DATABASE IF EXISTS appusuarios;
+CREATE DATABASE appusuarios;
+USE appusuarios;
+
+DROP TABLE IF EXISTS usuarios;
+CREATE TABLE usuarios (
+  id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
