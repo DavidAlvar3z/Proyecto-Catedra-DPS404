@@ -28,9 +28,9 @@ export default function LoginCredenciales({ goBack }) {
   }
 
   return (
-    <ImageBackground source={require("../assets/Fondo.png")} style={loginStyles.background}>
+    <ImageBackground source={require("../frontend/assets/Fondo.png")} style={loginStyles.background}>
       <View style={loginStyles.container}>
-        <Image source={require("../assets/Logo.png")} style={loginStyles.logo} />
+        <Image source={require("../frontend/assets/Logo.png")} style={loginStyles.logo} />
         <View style={loginStyles.inputContainer}>
           <TextInput
             style={loginStyles.input}

@@ -10,14 +10,14 @@ export default function App() {
   const [isLogin, setIsLogin] = useState(false);
 
   return (
-    <ImageBackground source={require("./assets/Fondo.png")} style={styles.container}>
+    <ImageBackground source={require("./frontend/assets/Fondo.png")} style={styles.container}>
       {isLogin ? (
         <LoginCredenciales goBack={() => setIsLogin(false)} />
       ) : (
         <>
           {showLogin ? (
             <>
-              <Image source={require("./assets/Logo.png")} style={styles.logo} />
+              <Image source={require("./frontend/assets/Logo.png")} style={styles.logo} />
               <TouchableOpacity style={styles.loginButton} onPress={() => setIsLogin(true)}>
                 <Text style={styles.buttonText}>LOGIN</Text>
                 <FontAwesome5 name="arrow-right" size={20} color="white" style={styles.icon} />

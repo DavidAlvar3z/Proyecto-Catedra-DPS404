@@ -42,8 +42,8 @@ export default function Registro({ navigation }) {
   };
 
   return (
-    <ImageBackground source={require("../assets/Fondo.png")} style={styles.container}>
-      <Image source={require("../assets/Logo.png")} style={styles.logo} />
+    <ImageBackground source={require("../frontend/assets/Fondo.png")} style={styles.container}>
+      <Image source={require("../frontend/assets/Logo.png")} style={styles.logo} />
 
       <View style={styles.inputContainer}>
         <TextInput

@@ -4,16 +4,15 @@ import {
   Text,
   Image,
   FlatList,
-  StyleSheet,
-  Dimensions,
   ActivityIndicator,
   ScrollView,
 } from "react-native";
+import styles from "../styles/catalogoStyles";
 
-const API_KEY = "2600c988d2e1fef2bdc914341668eaf0";
+// Importa la API key desde el .env
+import { TMDB_API_KEY } from "@env";
+
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
-
-const windowWidth = Dimensions.get("window").width;
 
 export default function CatalogoPeliculas() {
   const [genres, setGenres] = useState([]);
@@ -22,7 +21,7 @@ export default function CatalogoPeliculas() {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=es-ES`
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${TMDB_API_KEY}&language=es-ES`
     )
       .then((res) => res.json())
       .then(async (data) => {
@@ -30,7 +29,7 @@ export default function CatalogoPeliculas() {
         let moviesObj = {};
         for (const genre of data.genres) {
           const moviesRes = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre.id}&language=es-ES`
+            `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${genre.id}&language=es-ES`
           );
           const moviesData = await moviesRes.json();
           moviesObj[genre.id] = moviesData.results || [];
@@ -56,7 +55,6 @@ export default function CatalogoPeliculas() {
         {genres.map((genre) => (
           <View key={genre.id} style={styles.genreSection}>
             <Text style={styles.genreTitle}>{genre.name}</Text>
-
             <FlatList
               data={moviesByGenre[genre.id]}
               keyExtractor={(item) => item.id.toString()}
@@ -88,58 +86,3 @@ export default function CatalogoPeliculas() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f9f9f9", // fondo claro
-    paddingTop: 40,
-  },
-  loading: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  mainTitle: {
-    fontSize: 28,
-    fontWeight: "700",
-    color: "#2C6156", // color verde oscuro suave
-    textAlign: "center",
-    marginBottom: 15,
-  },
-  genreSection: {
-    marginBottom: 25,
-  },
-  genreTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: "#333", // texto oscuro para contraste
-    marginLeft: 15,
-    marginBottom: 8,
-  },
-  movieItem: {
-    marginRight: 15,
-    width: windowWidth * 0.32,
-    alignItems: "center",
-  },
-  moviePoster: {
-    width: "100%",
-    height: windowWidth * 0.48,
-    borderRadius: 12,
-    backgroundColor: "#ddd",
-    shadowColor: "#000",
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 3 },
-  },
-  noImage: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  movieTitle: {
-    marginTop: 6,
-    color: "#444",
-    fontWeight: "500",
-    fontSize: 14,
-    textAlign: "center",
-  },
-});
