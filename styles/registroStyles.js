@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const registroStyles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1,               
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
@@ -27,7 +27,7 @@ const registroStyles = StyleSheet.create({
     fontSize: 17,
   },
   registerButton: {
-    width: 200, 
+    width: 200,
     paddingVertical: 10,
     borderRadius: 20,
     marginBottom: 10,
@@ -35,7 +35,7 @@ const registroStyles = StyleSheet.create({
     alignItems: "center",
   },
   loginButton: {
-    width: 200, 
+    width: 200,
     paddingVertical: 11,
     borderRadius: 20,
     backgroundColor: "#cc4400",
@@ -47,11 +47,11 @@ const registroStyles = StyleSheet.create({
     fontWeight: "700",
   },
   text: {
-  marginTop: 20, 
-  color: "#000000",
-  fontSize: 14,
-  marginBottom: 8,
-  fontWeight: "600",
+    marginTop: 20,
+    color: "#000000",
+    fontSize: 14,
+    marginBottom: 8,
+    fontWeight: "600",
   },
 });
 

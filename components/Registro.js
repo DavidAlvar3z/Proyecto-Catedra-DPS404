@@ -4,12 +4,12 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
   Image,
   ImageBackground,
   Alert,
+  StyleSheet,
 } from "react-native";
-import styles from "../styles/registroStyles"; // ← Importa el CSS externo
+import styles from "../styles/registroStyles";
 
 export default function Registro({ navigation }) {
   const [email, setEmail] = useState("");
@@ -42,7 +42,11 @@ export default function Registro({ navigation }) {
   };
 
   return (
-    <ImageBackground source={require("../frontend/assets/Fondo.png")} style={styles.container}>
+    <ImageBackground
+      source={require("../frontend/assets/Fondo.png")}
+      style={styles.container}
+      resizeMode="cover"  // Asegura que cubra TODO el fondo
+    >
       <Image source={require("../frontend/assets/Logo.png")} style={styles.logo} />
 
       <View style={styles.inputContainer}>

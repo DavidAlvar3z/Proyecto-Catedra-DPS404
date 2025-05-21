@@ -3,11 +3,21 @@ import { StyleSheet, Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 
 export default StyleSheet.create({
+  // Estilo para el ImageBackground que cubre toda la pantalla
+  background: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
+
   container: {
     flex: 1,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#f9f9f9", // Si quieres que el fondo blanco no tape la imagen, pon 'transparent'
     paddingTop: 40,
+    justifyContent: "center",  // Centrar contenido verticalmente (opcional)
+    alignItems: "center",      // Centrar contenido horizontalmente (opcional)
   },
+
   loading: {
     justifyContent: "center",
     alignItems: "center",
