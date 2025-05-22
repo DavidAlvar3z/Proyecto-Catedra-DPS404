@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,8 @@ import {
   ScrollView,
   TouchableOpacity,
   Alert,
+  Animated,
+  TouchableWithoutFeedback,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../styles/catalogoStyles";
@@ -22,6 +24,10 @@ export default function CatalogoPeliculas({ onLogout }) {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(null);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
+
+  // Para el menú desplegable
+  const [menuVisible, setMenuVisible] = useState(false);
+  const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     async function fetchToken() {
@@ -39,14 +45,16 @@ export default function CatalogoPeliculas({ onLogout }) {
   useEffect(() => {
     if (!token) return;
 
-    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${TMDB_API_KEY}&language=es-ES`)
+    fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${TMDB_API_KEY}&language=es-ES`
+    )
       .then((res) => res.json())
       .then(async (data) => {
         setGenres(data.genres || []);
         let moviesObj = {};
         for (const genre of data.genres) {
           const moviesRes = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${genre.id}&language=es-ES`
+            `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${genre.id}&language=es-ES&primary_release_date.gte=1980-01-01&primary_release_date.lte=1989-12-31`
           );
           const moviesData = await moviesRes.json();
           moviesObj[genre.id] = moviesData.results || [];
@@ -57,32 +65,70 @@ export default function CatalogoPeliculas({ onLogout }) {
       .catch(() => setLoading(false));
   }, [token]);
 
-  async function handleLogout() {
+    async function handleLogout() {
     await AsyncStorage.removeItem("userToken");
-    onLogout();
+    setTimeout(() => {
+      onLogout();
+    }, 0);
+  } 
+
+  function toggleMenu() {
+    if (menuVisible) {
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 150,
+        useNativeDriver: true,
+      }).start(() => setMenuVisible(false));
+    } else {
+      setMenuVisible(true);
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+    }
+  }
+
+  // Funciones para las opciones del menú
+  function onPressCarrito() {
+    Alert.alert("Carrito", "Aquí iría la pantalla de carrito");
+    toggleMenu();
+  }
+  function onPressHistorial() {
+    Alert.alert("Historial", "Aquí iría el historial de compras");
+    toggleMenu();
+  }
+  function onPressCerrarSesion() {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 150,
+      useNativeDriver: true,
+    }).start(() => {
+      setMenuVisible(false);
+      handleLogout();
+    });
   }
 
   // Mostrar detalle si se seleccionó película
   if (selectedMovieId) {
-    return <DetallePelicula movieId={selectedMovieId} onBack={() => setSelectedMovieId(null)} />;
+    return (
+      <DetallePelicula
+        movieId={selectedMovieId}
+        onBack={() => setSelectedMovieId(null)}
+      />
+    );
   }
 
   if (!token) {
     return (
       <View style={[styles.container, styles.loading]}>
-        <Text style={{ color: "#2C6156", fontSize: 18, marginBottom: 20 }}>
+        <Text style={styles.navbarTitle}>
           Por favor inicia sesión para ver el catálogo
         </Text>
-        <TouchableOpacity
-          onPress={handleLogout}
-          style={{
-            backgroundColor: "#2C6156",
-            paddingVertical: 8,
-            paddingHorizontal: 16,
-            borderRadius: 6,
-          }}
-        >
-          <Text style={{ color: "#fff", fontWeight: "600" }}>Ir a Login</Text>
+        <TouchableOpacity onPress={handleLogout} style={styles.menuItemLast}>
+          <Text style={[styles.menuItemText, { color: "#fff", fontWeight: "600" }]}>
+            Ir a Login
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -98,33 +144,47 @@ export default function CatalogoPeliculas({ onLogout }) {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingHorizontal: 15,
-          marginBottom: 10,
-        }}
-      >
-        <Text style={styles.mainTitle}>Catálogo de Películas</Text>
+      {/* Header con título y menú */}
+      <View style={styles.navbar}>
+        <Text style={styles.navbarTitle}>Catálogo de Películas</Text>
+
+        {/* Botón menú hamburguesa */}
         <TouchableOpacity
-          onPress={handleLogout}
-          style={{
-            backgroundColor: "#2C6156",
-            paddingVertical: 6,
-            paddingHorizontal: 12,
-            borderRadius: 6,
-          }}
+          onPress={toggleMenu}
+          style={styles.hamburgerButton}
+          activeOpacity={0.7}
         >
-          <Text style={{ color: "#fff", fontWeight: "600" }}>Cerrar sesión</Text>
+          <View style={styles.hamburgerLine} />
+          <View style={styles.hamburgerLine} />
+          <View style={[styles.hamburgerLine, { marginBottom: 0 }]} />
         </TouchableOpacity>
       </View>
 
-      <ScrollView
-        style={{ backgroundColor: "#f9f9f9" }}
-        contentContainerStyle={{ paddingBottom: 20 }}
-      >
+      {/* Menú desplegable con fondo para cerrar al tocar fuera */}
+      {menuVisible && (
+        <View style={styles.menuOverlay}>
+          <TouchableWithoutFeedback onPress={toggleMenu}>
+            <View style={styles.menuOverlayTouchable} />
+          </TouchableWithoutFeedback>
+
+          <Animated.View style={[styles.menuContainer, { opacity: fadeAnim }]}>
+            <TouchableOpacity onPress={onPressCarrito} style={styles.menuItem}>
+              <Text style={styles.menuItemText}>Carrito</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={onPressHistorial} style={styles.menuItem}>
+              <Text style={styles.menuItemText}>Historial de compras</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={onPressCerrarSesion} style={styles.menuItemLast}>
+              <Text style={styles.menuItemTextLogout}>Cerrar sesión</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+      )}
+
+      {/* Contenido principal debajo del navbar */}
+      <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         {genres.map((genre) => (
           <View key={genre.id} style={styles.genreSection}>
             <Text style={styles.genreTitle}>{genre.name}</Text>
@@ -138,6 +198,7 @@ export default function CatalogoPeliculas({ onLogout }) {
                 <TouchableOpacity
                   style={styles.movieItem}
                   onPress={() => setSelectedMovieId(item.id)}
+                  activeOpacity={0.7}
                 >
                   {item.poster_path ? (
                     <Image

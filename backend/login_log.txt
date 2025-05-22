@@ -1,0 +1,90 @@
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => davis
+    [password] => D4v7d4lv4rr3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'davis'
+❌ Contraseña incorrecta
+stdClass Object
+(
+    [username] => davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'davis'
+✅ Login correcto para davis
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7dl4v4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+❌ Contraseña incorrecta
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => 
+    [password] => 
+)
+❌ Faltan datos
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => Davis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'Davis'
+✅ Login correcto para Davis
+stdClass Object
+(
+    [username] => DAvis
+    [password] => D4v7d4lv4r3z
+)
+🔍 SELECT * FROM usuarios WHERE username = 'DAvis'
+✅ Login correcto para DAvis

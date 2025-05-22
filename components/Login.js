@@ -4,9 +4,11 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
-  ImageBackground,
   Image,
   Alert,
+  StatusBar,
+  StyleSheet,
+  Platform,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import loginStyles from "../styles/loginStyles";
@@ -18,7 +20,7 @@ export default function LoginCredenciales({ navigation, onLoginSuccess }) {
   const handleLogin = async () => {
     try {
       const response = await fetch(
-        "http://192.168.68.100/PROYECTO-CATEDRA-DPS404/backend/login.php",
+        "http://192.168.68.102/PROYECTO-CATEDRA-DPS404/backend/login.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -29,7 +31,7 @@ export default function LoginCredenciales({ navigation, onLoginSuccess }) {
 
       if (data.success) {
         await AsyncStorage.setItem("userToken", data.token);
-        onLoginSuccess(); // informa al padre que el login fue exitoso
+        onLoginSuccess();
       } else {
         Alert.alert("Error", data.message);
       }
@@ -39,10 +41,8 @@ export default function LoginCredenciales({ navigation, onLoginSuccess }) {
   };
 
   return (
-    <ImageBackground
-      source={require("../frontend/assets/Fondo.png")}
-      style={loginStyles.background}
-    >
+    <View style={styles.fullScreen}>
+      <StatusBar barStyle="dark-content" backgroundColor="#efddc1" />
       <View style={loginStyles.container}>
         <Image
           source={require("../frontend/assets/Logo.png")}
@@ -51,7 +51,7 @@ export default function LoginCredenciales({ navigation, onLoginSuccess }) {
         <View style={loginStyles.inputContainer}>
           <TextInput
             style={loginStyles.input}
-            placeholder="Username"
+            placeholder="username"
             placeholderTextColor="#E5DCC3"
             value={username}
             onChangeText={setUsername}
@@ -59,7 +59,7 @@ export default function LoginCredenciales({ navigation, onLoginSuccess }) {
           />
           <TextInput
             style={loginStyles.input}
-            placeholder="Password"
+            placeholder="password"
             placeholderTextColor="#E5DCC3"
             value={password}
             onChangeText={setPassword}
@@ -70,10 +70,21 @@ export default function LoginCredenciales({ navigation, onLoginSuccess }) {
         <TouchableOpacity style={loginStyles.button} onPress={handleLogin}>
           <Text style={loginStyles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={navigation.goBack} style={loginStyles.signUpButton}>
+        <TouchableOpacity
+          onPress={navigation.goBack}
+          style={loginStyles.signUpButton}
+        >
           <Text style={loginStyles.signUpText}>Regístrate</Text>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  fullScreen: {
+    flex: 1,
+    backgroundColor: "#efddc1",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
+});

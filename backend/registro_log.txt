@@ -1,0 +1,7 @@
+stdClass Object
+(
+    [correo] => 
+    [nombre] => 
+    [contrasena] => 
+)
+❌ Datos incompletos

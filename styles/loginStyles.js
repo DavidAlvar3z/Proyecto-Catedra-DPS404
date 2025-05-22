@@ -1,20 +1,22 @@
 import { StyleSheet } from "react-native";
 
 const loginStyles = StyleSheet.create({
-  background: {
+  safeArea: {
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 20,
+    backgroundColor: "#efddc1",
+  },
+  keyboardAvoiding: {
+    flex: 1,
+    backgroundColor: "#efddc1",
   },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
+    backgroundColor: "#efddc1",
+    paddingHorizontal: 20,
   },
-  logo: {
+    logo: {
     width: 120,
     height: 120,
     resizeMode: "contain",

@@ -18,7 +18,7 @@ export default function Registro({ navigation }) {
 
   const handleRegistro = async () => {
     try {
-      const response = await fetch("http://192.168.68.100/PROYECTO-CATEDRA-DPS404/backend/registrar.php", {
+      const response = await fetch("http://192.168.68.102/PROYECTO-CATEDRA-DPS404/backend/registrar.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
