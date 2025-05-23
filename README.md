@@ -1,4 +1,3 @@
-
 # 🎬 CineRetro – Proyecto Cátedra DPS404
 📚 **Universidad Don Bosco – 2025**
 
@@ -69,6 +68,23 @@ npx expo start
 ## 🔗 API Pública Utilizada
 
 - [Pokefact API](https://pokefact-api.example.com)
+
+---
+
+## 🔑 Configuración de API TMDB
+
+Para integrar **The Movie Database (TMDB)** en el proyecto:
+
+1. Crea un archivo llamado `.env` en la **carpeta raíz del proyecto** (`PROYECTO-CATEDRA-DPS404`).
+2. Agrega la siguiente línea en ese archivo:
+
+```env
+TMDB_API_KEY=2600c988d2e1fef2bdc914341668eaf0
+```
+
+> Este archivo es necesario para que la app pueda consumir la API de TMDB. Asegúrate de que no esté incluido en los commits (agrega `.env` al archivo `.gitignore` si es necesario).
+
+📎 También puedes [descargar directamente el archivo `.env`](sandbox:/mnt/data/.env)
 
 ---
 
